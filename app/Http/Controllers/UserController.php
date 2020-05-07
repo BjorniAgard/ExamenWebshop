@@ -83,6 +83,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete(); // vindt user id en verwijder het
+        return redirect()->back(); // redirect terug
     }
 }

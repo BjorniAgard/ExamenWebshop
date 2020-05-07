@@ -20,8 +20,7 @@ class OrderController extends Controller
     public function index()
     {
 
-        $orders = Order::All(); // laat alle orders zien
-
+        $orders = Order::sortable()->paginate(10);
         return view('order.index', compact('orders'));
         // laat de index.blade.php zien in order mapje en stuurt orders variable naar de view
     }
@@ -88,6 +87,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
+        
         $orders = order_product::where('order_product.order_id', '=', $id)->get();
         return view('order.show', compact('orders'));
         // laat de show.blade.php zien in order mapje en stuurt orders variable naar de view

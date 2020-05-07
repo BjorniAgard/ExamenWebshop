@@ -13,6 +13,7 @@
                 <th scope="col">Adres</th>
                 <th scope="col">Telefoonnummer</th>
                 <th scope="col">Rol</th>
+                <th scope="col">Actie</th>
             </tr>
         </thead>
         @foreach ($users as $user)
@@ -26,7 +27,13 @@
                 <td>@if($user->user_role_id == 1)Admin
                     @else Gebruiker
                     @endif</td>
-
+                <td>
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" onclick="return confirm('Weet je zeker dat je deze gebruiker wilt verwijderen?');" class="mt-2 btn btn-danger" value="verwijderen">
+                    </form>
+                </td>
             </tr>
         </tbody>
         @endforeach

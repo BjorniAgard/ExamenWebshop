@@ -16,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all(); // vindt alle producten
-
+        $products = Product::sortable()->paginate(10);
         return view('product.index', compact('products'));
         // laat de index.blade.php zien in product mapje en stuurt products variable naar de view
     }

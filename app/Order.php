@@ -3,12 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Order extends Model
 {
+    use Sortable;
     protected $fillable = [
         'date', 'status'
     ];
+
+    public $sortable = ['id', 'date', 'status'];
 
     public function employees()
     {

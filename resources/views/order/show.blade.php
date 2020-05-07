@@ -17,6 +17,7 @@
                 <th scope="col">Prijs per stuk</th>
                 <th scope="col">Totale prijs</th>
                 <th scope="col">Status</th>
+                <th scope="col">Actie</th>
             </tr>
         </thead>
         @foreach ($orders as $order)
@@ -36,19 +37,19 @@
                 <td>@if($ordered->status == 0) Nog niet aangekomen
                     @else Aangekomen
                     @endif</td>
-                <!--<td><a href="{{ route('editOrderProduct.edit', $order->id) }}" class="mb-2  btn btn-warning">Wijzigen</a><br>
+                <td><a href="{{ route('editOrderProduct.edit', $order->id) }}" class="mb-2  btn btn-warning">Wijzigen</a><br>
                     <form action="{{ route('destroyOrderProduct.destroy', $order->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="mt-2 btn btn-danger" value="verwijderen">
                     </form>
-                </td>-->
+                </td>
             </tr>
         </tbody>
         @endforeach
         @endforeach
         @endforeach
-       <!-- <a href="{{ route('createOrderProduct.create', request()->route('order')) }}" class="btn btn-primary">Bestelling toevoegen</a>-->
+        <a href="{{ route('createOrderProduct.create', request()->route('order')) }}" class="btn btn-primary">Bestelling toevoegen</a>
         <a href="{{ route('order.index')}}" class="ml-3 btn btn-primary">Terug naar alle bestellingen</a>
     </table>
 </div>

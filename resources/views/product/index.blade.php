@@ -4,17 +4,18 @@
 @section('content')
 
 <div class="container">
-    <!--<a href="{{ route('product.create')}}" class="btn btn-primary">Product aanmaken</>-->
+    <a href="{{ route('product.create')}}" class="btn btn-primary">Product aanmaken</a>
     <table class="mt-4 table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">@sortablelink('id')</th>
                 <th scope="col">Product</th>
-                <th scope="col">Omschrijving</th>
+                <th scope="col">@sortablelink('description', 'omschrijving')</th>
                 <th scope="col">Categorie</th>
                 <th scope="col">Prijs</th>
                 <th scope="col">Voorraad</th>
                 <th scope="col">Status</th>
+                <th scope="col">Actie</th>
             </tr>
         </thead>
         @foreach ($products as $product)
@@ -29,13 +30,13 @@
                 <td>@if($product->stock > 0)Beschikbaar
                     @else Niet beschikbaar meer
                     @endif</td>
-                <!--<td><a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning">Wijzigen</a>
+                <td><a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning">Wijzigen</a>
                     <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="mt-2 btn btn-danger" value="verwijderen">
                     </form>
-                </td>-->
+                </td>
             </tr>
         </tbody>
         @endforeach
